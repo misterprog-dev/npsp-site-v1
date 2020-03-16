@@ -1,0 +1,105 @@
+{% load static %}
+{% block header %}
+
+    <!-- toggle top area -->
+    
+    <div class="hidden-top">
+        <div class="hidden-top-inner container">
+            <div class="row">
+                <div class="span12">
+                    <ul>
+                    <li><strong>La NPSP-CI</strong></li>
+                    <li>Km4, Boulvard de Marseille, BP V5</li>
+                    <li>Appelez nous au <i class="icon-phone"></i>  (+225) 21 21 73 02</li>
+                    </ul>
+                </div>            
+            </div>       
+        </div>    
+    </div>
+    <!-- end toggle top area -->
+    <!-- start header -->
+    <header>
+        <div class="container">
+            <!-- hidden top area toggle link -->
+            <div id="header-hidden-link">
+            <a href="#" class="toggle-link" title="Click me you'll get a surprise" data-target=".hidden-top"><i></i>Open</a>
+            </div>
+            <!-- end toggle link -->
+            <div class="row nomargin">
+            <div class="span12">
+                <div class="headnav">                 
+                </div>
+                
+            </div>
+            </div>
+            <div class="row">
+            <div class="span4">
+                <div class="logo">
+                <a href="{% url 'index' %}"><img src="{% static 'img/npsp/logo.png' %}" alt="" class="logo" width="80" height="80" /></a>
+                <h1>Des medicaments de qualité accessibles à tous</h1>
+                </div>
+            </div>
+            <div class="span8">
+                <div class="navbar navbar-static-top">
+                <div class="navigation">
+                    <nav>
+                        <ul class="nav topnav">
+                            <li class="active">
+                                <a href="{% url 'index' %}" style="font-weight:bold;">ACCUEIL</a>                           
+                            </li>                           
+                            <li class="dropdown">
+                                <a href="#" style="font-weight:bold;">COMMANDES<i class="icon-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'passer_commande' %}" style="font-weight:bold;">PASSER COMMANDE</a></li>
+                                    <li><a href="{% url 'gerer_commande' %}" style="font-weight:bold;">GERER COMMANDE</a></li>
+                                    <li><a href="{% url 'historique_commande' %}" style="font-weight:bold;">HISTORIQUE COMMANDES</a></li>
+                                </ul>
+                            </li>                            
+                            <li>
+                                <a href="" style="font-weight:bold;">LIVRAISON</a>                            
+                            </li>
+                            <li>
+                            <a href="{% url 'about' %}" style="font-weight:bold;">A PROPOS</a>                            
+                            </li>
+                            <li>
+                            <a href="{% url 'contact' %}" style="font-weight:bold;">CONTACT <i class="icon-phone"></i></a>
+                            </li>
+                        </ul>
+
+                        {% comment %} <li>
+                                <a href="{% url 'planning' %}" style="font-weight:bold;">PLANNING</a>                            
+                            </li> {% endcomment %}
+                             
+                           {% comment %} <li class="dropdown">
+                                <a href="#" style="font-weight:bold;">INSCRIPTION<i class="icon-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'inscriptionAgent' %}" style="color:white;font-weight:bold;">INSCRIPTION AGENT</a></li>
+                                    <li><a href="{% url 'inscriptionClient' %}" style="color:white;font-weight:bold;">INSCRIPTION CLIENT</a></li>
+                                </ul>
+                            </li> {% endcomment %}
+                            {% comment %} <li>
+                                <a href="{% url 'statistique' %}" style="font-weight:bold;">STATISTIQUE</a>                            
+                            </li> {% endcomment %}
+                             {% comment %} <li class="dropdown">
+                                <a href="#" style="font-weight:bold;">CLIENTS<i class="icon-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'inscriptionClient' %}" style="color:white;font-weight:bold;">AJOUTER CLIENTS</a></li>
+                                    <li><a href="{% url 'gerer_client' %}" style="color:white;font-weight:bold;">GERER LES CLIENTS</a></li>
+                                    <li><a href="{% url 'valider_commande_page' %}" style="color:white;font-weight:bold;">VALIDER COMMANDES</a></li>
+                                </ul>
+                            </li>                             {% endcomment %}
+                        
+                    </nav>
+                    
+                </div>
+                <!-- end navigation -->
+                
+                </div>
+            </div>
+            </div>
+        </div>
+    </header>
+        <!-- end header -->
+
+{% endblock header %}
+

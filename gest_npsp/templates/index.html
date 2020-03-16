@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+  <style>
+    .right {
+      float: right;
+      right: 0px;
+      padding: 10px;
+    }
+  </style>    
+{% endblock style %}
+{% block bar %}{% endblock bar %}
+{% block content %}
+
+     <section id="featured">
+      <!-- start slider -->
+      <!-- Slider -->
+      <div id="nivo-slider">
+        <div class="nivo-slider">
+          <!-- Slide #1 image -->
+          {% comment %} <img src="{% static 'img/npsp/banner1.jpg' %}" alt="" title="#caption-1" style="height: 431px;width:978" /> {% endcomment %}
+          <!-- Slide #2 image -->
+          <img src="{% static 'img/npsp/banner2.png' %}" alt="" title="#caption-2" style="height: 431px;width:978" />
+          <!-- Slide #3 image -->
+          <img src="{% static 'img/npsp/banner3.png' %}" alt="" title="#caption-3" style="height: 431px;width:978"/>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <!-- Slide #1 caption -->
+              {% comment %} <div class="nivo-caption" id="caption-1">
+                <div>
+                  <h2>Remise de <strong>prix d'encouragement</strong></h2>
+                  <p>
+                    
+                  </p>
+                  <a href="#" class="btn btn-theme">Plus de détail</a>
+                </div>
+              </div> {% endcomment %}
+              <!-- Slide #2 caption -->
+              <div class="nivo-caption" id="caption-2">
+                <div>
+                  <h2> COUVERTURE MALADIE UNIVERSELLE:  <strong>LES MEDICAMENTS DISPONIBLES </strong></h2>
+                  <p>
+                    En vue d’apporter une réponse appropriée à la précarité des conditions de vie des populations 
+                  </p>
+                  <a href="http://www.npsp.ci/actu.php?id=21" class="btn btn-theme">Plus de détail</a>
+                </div>
+              </div>
+              <!-- Slide #3 caption -->
+              <div class="nivo-caption" id="caption-3">
+                <div>
+                  <h2>Un service <strong>dynamique</strong></h2>
+                  <p>
+                    Notre équipe assure l’accessibilité des médicaments essentiels et intrants stratégiques de santé de bonne qualité aux populations en Côte d’Ivoire 24h/24 et 7j/7.
+                  </p>
+                  <a href="#" class="btn btn-theme" style="font-color: white; font-style:weight">Plus de détail</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>        
+      </div>
+      <!-- end slider -->
+    </section>
+
+    <section class="callaction">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <div class="big-cta">
+              <div class="cta-text">
+                <h3>Des<span class="highlight"><strong> dixaines de tonnes</strong></span> de medicaments distribués cette année !</h3>
+              </div>
+              <div class="cta floatright">
+                <a class="btn btn-large btn-theme btn-rounded" href="#">En savoir plus</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% comment %} <section>
+      <div class="container">
+        <div class="row"  style="display:inline-block;">
+          <div class="span12">
+            <div>
+              <p>
+                <img src="{% static 'img/npsp/dg1.jpg' %}" media-simple="true" alt="DG NPSP-CI" style="width: 40%;height: 40%; margin-top: 5%; margin-bottom: 5%">
+                <p>
+                  <h3>Mot du Directeur General</h3>
+                  <p>
+                    L’accès aux médicaments essentiels est une composante importante de l’offre de soins et de toute politique de santé. 
+                    En 2013, en vue de répondre plus efficacement aux enjeux de la santé des populations, 
+                    le Gouvernement ivoirien a procédé à une réforme majeure dans le secteur de la santé en créa...
+                    <a href="http://www.npsp.ci/dg.php" class=""> Lire la suite</a>
+                  </p>
+                  <p>
+                    Professeur YAPI  Ange Désiré.
+                  </p>
+                  <p>
+                      Directeur Général
+                  </p>
+                </p>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> {% endcomment %}
+   
+   <section id="content">
+      <div class="container">
+        
+        <!-- Portfolio Projects -->
+        <div class="row">
+          <div class="span12">
+            <h4 class="heading"><strong>La Nouvelle PSP CI à Africa Santé Expo 2019</strong></h4>
+            <div class="row">
+              <section id="projects">
+                <ul id="thumbs" class="portfolio">
+                  <!-- Item Project and Filter Name -->
+                  <li class="item-thumbs span3 design" data-id="id-0" data-type="web">
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The City" href="{% static 'img/npsp/G1.png' %}">
+						<span class="overlay-img"></span>
+						<span class="overlay-img-thumb font-icon-plus"></span>
+						</a>
+                    <!-- Thumb Image and Description -->
+                    <img src="{% static 'img/npsp/G1.png' %}" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                  </li>
+                  <!-- End Item Project -->
+                  <!-- Item Project and Filter Name -->
+                  <li class="item-thumbs span3 design" data-id="id-1" data-type="icon">
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Office" href="{% static 'img/npsp/G2.png' %}">
+						<span class="overlay-img"></span>
+						<span class="overlay-img-thumb font-icon-plus"></span>
+						</a>
+                    <!-- Thumb Image and Description -->
+                    <img src="{% static 'img/npsp/G2.png' %}" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                  </li>
+                  <!-- End Item Project -->
+                  <!-- Item Project and Filter Name -->
+                  <li class="item-thumbs span3 photography" data-id="id-2" data-type="illustrator">
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Mountains" href="{% static 'img/npsp/G3.png' %}">
+						<span class="overlay-img"></span>
+						<span class="overlay-img-thumb font-icon-plus"></span>
+						</a>
+                    <!-- Thumb Image and Description -->
+                    <img src="{% static 'img/npsp/G3.png' %}" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                  </li>
+                  <!-- End Item Project -->
+                  <!-- Item Project and Filter Name -->
+                  <li class="item-thumbs span3 photography" data-id="id-2" data-type="illustrator">
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Mountains" href="{% static 'img/npsp/G4.png' %}">
+						<span class="overlay-img"></span>
+						<span class="overlay-img-thumb font-icon-plus"></span>
+						</a>
+                    <!-- Thumb Image and Description -->
+                    <img src="{% static 'img/npsp/G4.png' %}" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                  </li>
+                  <!-- End Item Project -->
+                  <!-- Item Project and Filter Name -->
+                  <li class="item-thumbs span3 photography" data-id="id-4" data-type="web">
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Sea" href="{% static 'img/npsp/G5.png' %}">
+						<span class="overlay-img"></span>
+						<span class="overlay-img-thumb font-icon-plus"></span>
+						</a>
+                    <!-- Thumb Image and Description -->
+                    <img src="{% static 'img/npsp/G5.png' %}" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                  </li>
+                  <!-- End Item Project -->
+                  <!-- Item Project and Filter Name -->
+                  <li class="item-thumbs span3 photography" data-id="id-5" data-type="icon">
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Clouds" href="{% static 'img/npsp/G6.png' %}">
+						<span class="overlay-img"></span>
+						<span class="overlay-img-thumb font-icon-plus"></span>
+						</a>
+                    <!-- Thumb Image and Description -->
+                    <img src="{% static 'img/npsp/G6.png' %}" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                  </li>
+                  <!-- End Item Project -->
+                  <!-- Item Project and Filter Name -->
+                  <li class="item-thumbs span3 photography" data-id="id-2" data-type="illustrator">
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Mountains" href="{% static 'img/npsp/G7.png' %}">
+						<span class="overlay-img"></span>
+						<span class="overlay-img-thumb font-icon-plus"></span>
+						</a>
+                    <!-- Thumb Image and Description -->
+                    <img src="{% static 'img/npsp/G7.png' %}" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                  </li>
+                  <!-- End Item Project -->
+                  <!-- Item Project and Filter Name -->
+                  <li class="item-thumbs span3 design" data-id="id-0" data-type="web">
+                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="The Dark" href="{% static 'img/npsp/G8.png' %}">
+						<span class="overlay-img"></span>
+						<span class="overlay-img-thumb font-icon-plus"></span>
+						</a>
+                    <!-- Thumb Image and Description -->
+                    <img src="{% static 'img/npsp/G8.png' %}" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                  </li>
+                  <!-- End Item Project -->
+                </ul>
+              </section>
+            </div>
+          </div>
+        </div>
+        <!-- End Portfolio Projects -->
+        <!-- divider -->
+        <div class="row">
+          <div class="span12">
+            <div class="solidline">
+            </div>
+          </div>
+        </div>
+        <!-- end divider -->
+        <div class="row">
+          <div class="span12">
+            <h4>Nos <strong>partenaires</strong></h4>
+            <ul id="mycarousel" class="jcarousel-skin-tango recent-jcarousel clients">
+              <li>
+                <a href="#">
+					<img src="{% static 'img/npsp/Partenaire1.jpg' %}" class="client-logo" alt="" />
+					</a>
+              </li>
+              <li>
+                <a href="#">
+					<img src="{% static 'img/npsp/Partenaire2.jpg' %}" class="client-logo" alt="" />
+					</a>
+              </li>
+              <li>
+                <a href="#">
+					<img src="{% static 'img/npsp/Partenaire3.jpg' %}" class="client-logo" alt="" />
+					</a>
+              </li>
+              <li>
+                <a href="#">
+					<img src="{% static 'img/npsp/Partenaire4.jpg' %}" class="client-logo" alt="" />
+					</a>
+              </li>
+              <li>
+                <a href="#">
+					<img src="{% static 'img/npsp/Partenaire5.jpg' %}" class="client-logo" alt="" />
+					</a>
+              </li>
+              <li>
+                <a href="#">
+					<img src="{% static 'img/npsp/Partenaire6.jpg' %}" class="client-logo" alt="" />
+					</a>
+              </li>
+              <li>
+                <a href="#">
+					<img src="{% static 'img/npsp/Partenaire7.jpg' %}" class="client-logo" alt="" />
+					</a>
+              </li>
+              <li>
+                <a href="#">
+					<img src="{% static 'img/npsp/Partenaire8.jpg' %}" class="client-logo" alt="" />
+					</a>
+              </li>
+              <li>
+                <a href="#">
+					<img src="{% static 'img/npsp/Partenaire9.jpg' %}" class="client-logo" alt="" />
+					</a>
+              </li>
+              <li>
+                <a href="#">
+					<img src="{% static 'img/npsp/Partenaire10.jpg' %}" class="client-logo" alt="" />
+					</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock content %}

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Commande {% endblock title %}
+
+
+{% block others %}
+
+{% endblock others %}
+
+{% block bar_title %}Ma commande !{% endblock bar_title %}
+{% block bar_page %}Commande{% endblock bar_page %}
+
+{% block content %}
+
+<section id="section">    
+    <div class="container"><br>
+        <div class="row">
+
+            {% if message %}
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ message }}</strong>.
+                </div>
+
+            {% endif %}
+            
+
+            <div class="span6" style="margin-left:300px;">
+                <form action="{% url 'passer_commande' %}" method="POST">
+                    {% csrf_token %}       
+
+                    <div class="span6">
+                        <label for="date_livraison">Date de livraison</label>
+                        <input type="date" id="date_livraison" name="date_livraison" required>  
+                    </div>                  
+
+                    <table class="table" id="products_table">
+                    <thead>
+                        <tr>
+                            <th>Medicament</th>
+                            <th>Quantité (en carton )</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="product0">
+                            <td>
+                                <select name="products" class="form-control" required>
+                                    <option value="">-- choisir medicament --</option>
+                                    {% for m in medicaments  %}
+                                        <option value="{{ m.id }}">
+                                            {{ m.libelle_produit }}  
+                                            {{ m.type_medicament.libelle }} 
+                                            ({{ m.dosage }} {{ m.unite }}) 
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </td>                                            
+                            <td>
+                                <input type="number" min="1" name="quantities" class="form-control" value="1" required/>
+                            </td>
+                        </tr>
+                        <tr id="product1"></tr>
+                        <tr id="product2"></tr>
+                        <tr id="product3"></tr>
+                        <tr id="product4"></tr>
+                        <tr id="product5"></tr>
+                        <tr id="product6"></tr>
+                        <tr id="product7"></tr>
+                        <tr id="product8"></tr>
+                        <tr id="product9"></tr>
+                        <tr id="product10"></tr>
+                        <tr id="product11"></tr>
+                        <tr id="product12"></tr>
+                        <tr id="product13"></tr>
+                        <tr id="product14"></tr>
+                        <tr id="product15"></tr>
+                        <tr id="product16"></tr>
+                        <tr id="product17"></tr>
+                        <tr id="product18"></tr>
+                        <tr id="product19"></tr>
+                        <tr id="product20"></tr>
+                        
+                    </tbody>
+                </table>
+
+                <div class="span6">
+                    <div class="col-md-12">
+                        <input type="hidden" id="nombre" name="nombre" class="form-control" />
+                        <button id="add_row" class="btn btn-default pull-left" style="margin-right:20px">+ Add Row</button>
+                        <button id='delete_row' class="btn btn-danger">- Delete Row</button>
+                    </div>
+                </div>
+                    <div class="span6"><br><br>
+                        <input class="btn btn-primary" type="submit" value="Valider la commande">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+   
+{% endblock content %}
+
+{% block myscriptjs %}
+   
+
+{% endblock myscriptjs %}

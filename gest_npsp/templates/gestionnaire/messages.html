@@ -1,0 +1,36 @@
+{% extends 'gestionnaire/base.html' %}
+
+{% block title %}Mes messages{% endblock title %}
+
+{% block section %}
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Messages</h4>
+                    <p class="category">Les derniers messsages reçus</p>
+                </div>
+                <div class="content">
+                  
+                    {% for c in contacts %}
+
+                        <div class="alert alert-info alert-with-icon" data-notify="container">
+                            <button type="button" aria-hidden="true" class="close">×</button>
+                            <span data-notify="icon" class="pe-7s-bell"></span>
+                            <span data-notify="message">
+                            <b>Nom:</b> {{c.nom|upper}} <br>
+                            <b>Email:</b> {{c.email}} <br>
+                            <b>Sujet:</b> {{c.sujet}} <br>
+                            <b>Message:</b><br> {{c.message}} <br>
+                            </span>
+                        </div>
+
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock section %}

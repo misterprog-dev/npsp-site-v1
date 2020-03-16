@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Gérer Commande {% endblock title %}
+
+{% block others %}
+
+{% endblock others %}
+
+{% block bar_title %}Gestion !{% endblock bar_title %}
+{% block bar_page %}Gérer commandes{% endblock bar_page %}
+
+{% block content %}
+
+<section id="section">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+            <div class="span12">
+                <h4>Modifier ou supprimer un commande qui n'est pas livrée</h4>
+                <table class="table">
+                <thead>
+                    <tr>
+                    <th>
+                        
+                    </th>
+                    <th>
+                        Date commande
+                    </th>
+                    <th>
+                        Date livraison
+                    </th>
+                    <th>
+                        Details commande
+                    </th>
+                    <th>
+                        Etat commande
+                    </th>
+                    <th>
+                        
+                    </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for c in commandes %}
+                        <tr class="success" style="color:black;font-weight:bold;">
+                            <td>
+                                {{ forloop.counter }}
+                            </td>
+                            <td>
+                                {{ c.date_commande }}
+                            </td>
+                            <td>
+                                {{ c.date_livraison }}
+                            </td>
+                            <td>
+                                {% for d in details %}
+                                    {% if d.id_commande.id  == c.id %}
+                                        <u>Médi : {{ d.id_medicament.libelle_produit }} </u><br>
+                                        Type : {{ d.id_medicament.type_medicament.libelle }} <br>
+                                        Quantité : {{ d.quantite_med }} <br> 
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% if c.etat_commande == 0 %}Non validée{% endif %}
+                                {% if c.etat_commande == 1 %}Validé pas livrée{% endif %}
+                            </td>
+                            <td>
+                                <a href="/supp_commande/{{c.id}}"><i class="icon-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %} 
+                </tbody>
+                </table>
+          </div>
+            </div>
+        </div>
+    </div>
+</section>
+   
+{% endblock content %}
+
+{% block myscriptjs %}
+   
+
+{% endblock myscriptjs %}

@@ -1,0 +1,98 @@
+{% extends 'gestionnaire/base.html' %}
+
+{% block title %}Gérer clients{% endblock title %}
+
+{% block section %}
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h3 class="title">La liste des clients</h3>
+                            <p class="category">Modifier ou supprimer des clients</p>
+                        </div>
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover table-striped" style="color:black;font-weight:bold;">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            
+                                        </th>
+                                        <th style="color:black;font-weight:bold;">
+                                            Nom
+                                        </th>
+                                        <th style="color:black;font-weight:bold;">
+                                            Prénom
+                                        </th>
+                                        <th style="color:black;font-weight:bold;">
+                                            Email
+                                        </th>
+                                        <th style="color:black;font-weight:bold;">
+                                            Type CLient
+                                        </th>
+                                        <th style="color:black;font-weight:bold;">
+                                            Temps de service
+                                        </th>
+                                        <th style="color:black;font-weight:bold;">
+                                            Contact
+                                        </th>
+                                        <th style="color:black;font-weight:bold;">
+                                            Adresse
+                                        </th>                                        
+                                        <th>
+                                            
+                                        </th>
+                                        <th>
+                                            
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>                                    
+                                    {% for client in clients %}
+                                        <tr>
+                                            <td>
+                                            {{forloop.counter}}  
+                                            </td>
+                                            <td>
+                                                {{ client.nom }}
+                                            </td>
+                                            <td>
+                                                {{ client.prenom }} 
+                                            </td>
+                                            <td>
+                                                {{ client.email }} 
+                                            </td>
+                                            <td>
+                                                {{ client.type_client.libelle}}
+                                            </td>
+                                            <td>
+                                                {{ client.service_time}} heures
+                                            </td>
+                                            <td>
+                                                {{ client.contact }}
+                                            </td>
+                                            <td>
+                                                {{ client.ville }}
+                                            </td>                                            
+                                            <td>
+                                                <a href=""><i class="pe-7s-users"></i></a>
+                                            </td>
+                                            <td>
+                                                <a href="/deleteclient/{{client.id}}"><i class="pe-7s-close-circle"></i></a>
+                                            </td>
+
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock section %}

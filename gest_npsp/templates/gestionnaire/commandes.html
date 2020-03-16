@@ -1,0 +1,75 @@
+{% extends 'gestionnaire/base.html' %}
+
+
+{% block title %}Gérer commandes{% endblock title %}
+
+{% block section %}
+
+   <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h3 class="title">Commandes</h3>
+                            <p class="category">Valider les commandes en attentes !</p>
+                        </div>
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <th></th>
+                                    <th style="color:black;font-weight:bold;">Client</th>
+                                    <th style="color:black;font-weight:bold;">Adresse</th>
+                                    <th style="color:black;font-weight:bold;">Date commande</th>
+                                    <th style="color:black;font-weight:bold;">Date livraison</th>
+                                    <th style="color:black;font-weight:bold;">Détails commande</th>
+                                    {% comment %} <th style="color:black;font-weight:bold;">Quantité totale</th> {% endcomment %}
+                                    <th style="color:black;font-weight:bold;">Etat commande</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    {% for cde in commandes %}
+                                        <tr>
+                                            <td>{{forloop.counter}}</td>
+                                            <td>{{ cde.client.nom |upper}} {{ cde.client.prenom |upper}}</td>
+                                            <td>{{ cde.client.ville}}</td>
+                                            <td>{{ cde.date_commande }}</td>
+                                            <td>{{ cde.date_livraison }}</td>
+                                            <td>
+                                                {% for d in details %}
+                                                    {% if d.id_commande.id  == cde.id %}
+                                                        <b>Médi : {{ d.id_medicament.libelle_produit }} </b><br>
+                                                        Type : {{ d.id_medicament.type_medicament.libelle }} <br>
+                                                        Quantité : {{ d.quantite_med }} <br> 
+                                                    {% endif %}
+                                                {% endfor %}                                                                                                                                               
+                                            </td>
+                                            {% comment %} <td>
+                                                {% with total=0 %}
+                                                    {% for d in details %}                                                        
+                                                        {% if cde.id  == d.id_commande.id %}
+                                                            {{ total|mul:d.quantite_med }}
+                                                        {% endif %}
+                                                    {% endfor %}                                                    
+                                                {% endwith %}                                                                                                
+                                            </td> {% endcomment %}
+                                            <td>
+                                                {% if cde.etat_commande == 0 %}Non validée{% endif %}
+                                                {% if cde.etat_commande == 1 %}Validée pas livrée{% endif %}
+                                                {% if cde.etat_commande == 2 %}Livrée{% endif %}
+                                            </td>
+                                            <td>
+                                                <a href="/validate_commande_client/{{cde.id}}"><i class="pe-7s-diskette"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock section %}

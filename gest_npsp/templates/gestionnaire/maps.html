@@ -1,0 +1,66 @@
+{% extends 'gestionnaire/base.html' %}
+
+{% block title %}Itinéraires{% endblock title %}
+
+
+{% block section %}
+
+
+<div class="content">       
+ 
+        <div class="container-fluid">
+                <div class="row">
+                        <div class="col-md-12">
+                                <div class="card">
+                                        <div class="header">
+                                                <h3 class="title">Trouver un itinéraire pour la tournée</h3>
+                                        </div> 
+                                        <div class="content"></div>                        
+                                </div>
+                                <div class="content">
+                                <form method="POST" action="{% url 'get_maps_data' %}">                                    
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label style="color:black;font-weight:bold;">(*) Nombre de véhicule</label>
+                                                <input type="number" class="form-control" min="0" name="vehicule_number" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label style="color:black;font-weight:bold;">(*) Capacité véhicules (Kg)</label>
+                                                <input type="number" class="form-control" min="0" name="vehicule_capacite" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                <label style="color:black;font-weight:bold;">(*) Dépôt initial</label>                                                
+                                                <select class="form-control"  name="depot_initial" required>
+                                                        <option value="0">ABIDJAN, Dépôt central</option>  
+                                                </select>
+                                            </div>
+                                            </div>
+                                        </div>                                        
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label style="color:black;font-weight:bold;">(*) Nom du projet</label>
+                                                <input type="text" class="form-control" name="nom_projet" required>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary btn-lg pull-right"><b>Rechercher itinéraire</b></button>
+                                    <div class="clearfix"></div>
+                                </form> <br>
+
+                                {% comment %} <a href="{% url 'iti' %}">test</a> {% endcomment %}
+                            </div>
+                        </div>
+                </div>
+                
+        </div>
+</div>
+
+{% endblock section %}

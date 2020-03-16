@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>NPSP-CI | {% block title %} Optimun Plateforme {% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'img/npsp/logo.png' %}" type="image/x-icon">       
+    <!-- css -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/fancybox/jquery.fancybox.css' %}" rel="stylesheet">
+    <link href="{% static 'css/jcarousel.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/flexslider.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <!-- Theme skin -->
+    <link href="{% static 'skins/default.css' %}" rel="stylesheet" />
+
+    {% block style %}
+      
+    {% endblock style %}
+
+    {% block others %}
+    
+    {% endblock others %}
+  
+  </head>
+  <body>
+
+    <div id="wrapper">
+      
+        {% include "header.html" %}
+        {% block bar %}
+          <section id="inner-headline">
+            <div class="container">
+              <div class="row">
+                <div class="span4">
+                  <div class="inner-heading">
+                    <h2>{% block bar_title %}{% endblock bar_title %}</h2>
+                  </div>
+                </div>
+                <div class="span8">
+                  <ul class="breadcrumb">
+                    <li><a href="{% url 'index' %}"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>              
+                    <li class="active">{% block bar_page %}{% endblock bar_page %}</li>                    
+                  </ul>
+                  
+                </div>
+              </div>
+            </div>
+          </section>
+        {% endblock bar %}
+
+
+        {% block content %}  {% endblock content %}
+
+        {% include "footer.html" %}
+
+     </div>    
+
+    <!-- javascript
+        ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/jcarousel/jquery.jcarousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+    <script src="{% static 'js/jquery.fancybox-media.js' %}"></script>
+    <script src="{% static 'js/google-code-prettify/prettify.js' %}"></script>
+    <script src="{% static 'js/portfolio/jquery.quicksand.js' %}"></script>
+    <script src="{% static 'js/portfolio/setting.js' %}"></script>
+    <script src="{% static 'js/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'js/jquery.nivo.slider.js' %}"></script>
+    <script src="{% static 'js/modernizr.custom.js' %}"></script>
+    <script src="{% static 'js/jquery.ba-cond.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slitslider.js' %}"></script>
+    <script src="{% static 'js/animate.js' %}"></script>
+
+    <!-- Template Custom JavaScript File -->
+    <script src="{% static 'js/custom.js' %}"></script>
+
+    <script>
+      $(document).ready(function(){
+
+        /*var today = new Date();
+        var dd = today.getDate();
+        document.getElementById("date_livraison").setAttribute("min", dd);*/
+
+        let row_number = 1;
+        x = 1;
+        var nombre = $('#nombre'); 
+        $("#add_row").click(function(e){          
+          e.preventDefault();
+          let new_row_number = row_number - 1;
+          //$('input[name=nombre]').val(new_row_number);
+          x++;
+          nombre.val(x)
+          $('#product' + row_number).html($('#product' + new_row_number).html()).find('td:first-child');
+          $('#products_table').append('');
+          row_number++;
+        });
+
+        $("#delete_row").click(function(e){          
+          e.preventDefault();
+          if(row_number > 1){
+            x--;
+            nombre.val(x)
+            $("#product" + (row_number - 1)).html('');
+            //$('input[name=nombre]').val(row_number);
+            row_number--;
+          }
+        });
+      });
+    </script>
+
+  </body>
+</html>

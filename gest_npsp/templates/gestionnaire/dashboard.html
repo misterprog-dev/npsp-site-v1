@@ -1,0 +1,113 @@
+
+{% extends 'gestionnaire/base.html' %}
+
+{% block title %}STATISTIQUE{% endblock title %}
+
+{% block section %}
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+
+                        <div class="header">
+                            <h4 class="title">Commandes par client</h4>
+                            <p class="category"></p>
+                        </div>
+                        <div class="content">
+                            <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+
+                            <div class="footer">
+                                {% comment %} <div class="legend">
+                                    <i class="fa fa-circle text-info"></i> Open
+                                    <i class="fa fa-circle text-danger"></i> Bounce
+                                    <i class="fa fa-circle text-warning"></i> Unsubscribe
+                                </div>
+                                <hr>
+                                <div class="stats">
+                                    <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Livraison par zone</h4>
+                            <p class="category"></p>
+                        </div>
+                        <div class="content">
+                            <div id="chartHours" class="ct-chart"></div>
+                            <div class="footer">
+                                {% comment %} <div class="legend">
+                                    <i class="fa fa-circle text-info"></i> Open
+                                    <i class="fa fa-circle text-danger"></i> Click
+                                    <i class="fa fa-circle text-warning"></i> Click Second Time
+                                </div>
+                                <hr>
+                                <div class="stats">
+                                    <i class="fa fa-history"></i> Updated 3 minutes ago
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                 <div class="col-md-6">
+                    <div class="card">
+
+                        <div class="header">
+                            <h4 class="title">Dates demande</h4>
+                            <p class="category"></p>
+                        </div>
+                        <div class="content">
+                            <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+
+                            <div class="footer">
+                                {% comment %} <div class="legend">
+                                    <i class="fa fa-circle text-info"></i> Open
+                                    <i class="fa fa-circle text-danger"></i> Bounce
+                                    <i class="fa fa-circle text-warning"></i> Unsubscribe
+                                </div>
+                                <hr>
+                                <div class="stats">
+                                    <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title"></h4>
+                            <p class="category"></p>
+                        </div>
+                        <div class="content">
+                            <div id="chartHours" class="ct-chart"></div>
+                            
+                            <div class="footer">
+                                {% comment %} <div class="legend">
+                                    <i class="fa fa-circle text-info"></i> Open
+                                    <i class="fa fa-circle text-danger"></i> Click
+                                    <i class="fa fa-circle text-warning"></i> Click Second Time
+                                </div>
+                                <hr>
+                                <div class="stats">
+                                    <i class="fa fa-history"></i> Updated 3 minutes ago
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock section %}

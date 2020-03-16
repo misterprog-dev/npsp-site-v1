@@ -1,0 +1,90 @@
+{% block footer %}
+
+    <footer>
+        <div class="container">
+            <div class="row">
+            <div class="span3">
+                <div class="widget">
+                <h5 class="widgetheading">Page de navigation</h5>
+                <ul class="link-list">
+                    <li><a href="{% url 'about' %}">Qui sommes-nous?</a></li>
+                    <li><a href="{% url 'about' %}">Nos services</a></li>
+                    <li >
+                        <span> Bonjour, {{ user.username }}</span>
+                    </li>
+                    <li >
+                        <span><a href="{% url 'logout_customer' %}" ><b>Se déconnecter</b></a></span>
+                    </li>                 
+                </ul>
+                </div>
+            </div>
+
+            <div class="span3">
+                <div class="widget">
+                <h5 class="widgetheading">Nos objectifs</h5>
+                <ul class="link-list">
+                    <li><a href="{% url 'about' %}">Programmes</a></li>
+                    <li><a href="{% url 'about' %}">Missions</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="span3">
+                <div class="widget">
+                    <h5 class="widgetheading">Newsletter</h5>
+                    <form action="" method="">
+                            <input type="hidden" value="" data-form-email="true">
+                            <div class="mbr-subscribe mbr-subscribe-dark input-group">
+                                <input type="email" class="form-control" name="email" required="" data-form-field="Email" id="email-footer4-46">
+                                <span class="input-group-btn mx-2">
+                                <button type="submit" class="btn btn-sm btn-success">S'inscrire</button>
+                                </span>
+                            </div>
+                    </form>                           
+                </div> 
+            
+            </div>          
+            
+            <div class="span3">
+                <div class="widget">
+                <h5 class="widgetheading">Contacter nous !</h5>
+                <address>
+                        <strong>Km4, Boulvard de Marseille, BP V5</strong><br>
+                                    
+                    </address>
+                <p>
+                    <i class="icon-phone"></i> (+225) 21 21 73 02<br>
+                    <i class="icon-envelope-alt"></i> info@npsp.ci
+                </p>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div id="sub-footer">
+            <div class="container">
+            <div class="row">
+                <div class="span6">
+                <div class="copyright">
+                    <p>
+                    <span>&copy;  Copyright 2020 Nouvelle PSP-CI - All right reserved</span>
+                    </p>
+                    
+                </div>
+                </div>
+                <div class="span6">
+                <ul class="social-network">
+                    <li><a href="#" data-placement="bottom" title="Facebook"><i class="icon-facebook icon-square"></i></a></li>
+                    <li><a href="#" data-placement="bottom" title="Twitter"><i class="icon-twitter icon-square"></i></a></li>
+                    <li><a href="#" data-placement="bottom" title="Linkedin"><i class="icon-linkedin icon-square"></i></a></li>
+                    <li><a href="#" data-placement="bottom" title="Pinterest"><i class="icon-pinterest icon-square"></i></a></li>
+                    <li><a href="#" data-placement="bottom" title="Google plus"><i class="icon-google-plus icon-square"></i></a></li>
+                </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
+    
+{% endblock footer %}

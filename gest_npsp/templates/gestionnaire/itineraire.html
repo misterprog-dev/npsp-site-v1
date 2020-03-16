@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Itinéraire des différents véhicules</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="shortcut icon" href="{% static 'img/npsp/logo.png' %}" type="image/x-icon">     
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <style>
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+</head>
+<body>
+
+{% comment %} <div class="row">
+  <a href="{% url 'route_page' %}" class="btn btn-primary"><b>Retour à la page</b></button>      
+</div> {% endcomment %}
+
+<div class="container">        
+
+    <h2>Les itinéraires des véhicules</h2>
+    <div class="col-lg-12">
+      {% if donnees_maps %}
+          <div id="accordion">
+              <div class="card">
+                  <div class="card-header">
+                      <a id="PLAN" class="card-link" data-toggle="collapse" href="#collapseOne">
+                      Le dépôt central
+                      </a>
+                  </div>
+                  <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                      <div class="card-body">
+                          <!--debut-->
+                          <div id="map" style="
+                                              float: left;
+                                              width: 100%;
+                                              height: 400px;">
+                          </div>                        
+                                  
+                      </div>
+                          <!--fin-->
+                  </div>            
+              </div>            
+              {% for adresses in donnees_maps %}              
+                <div class="card">
+                  <div class="card-header">
+                      <a id="PLAN{{forloop.counter}}" class="collapsed card-link" data-toggle="collapse" href="#collapse{{forloop.counter}}">
+                      Itinéraire du véhicule {{forloop.counter}}
+                      </a>
+                      <input type="hidden" value="{{forloop.counter}}" {% if forloop.last %} id="total" {% endif %}/>
+                  </div>
+                  <div id="collapse{{forloop.counter}}" class="collapse" data-parent="#accordion">
+                      <div class="card-body">
+                         
+                          <!--debut-->
+                          <div id="map{{forloop.counter}}" style="
+                                              float: left;
+                                              width: 100%;
+                                              height: 400px;">
+                          </div>
+                          <div id="right-panel{{forloop.counter}}">
+                              <div>
+                                  <input  id="start{{forloop.counter}}" type="hidden" value="{{ init_point }}"/>
+                                  <select multiple id="waypoints{{forloop.counter}}" hidden>
+                                    {% for ville in adresses %}                                                                              
+                                      <option value="{{ ville }}"></option>                                     
+                                    {% endfor %}  
+                                  </select>
+                                  <input  id="end{{forloop.counter}}" type="hidden" value="{{ init_point }}"/>  
+                              </div>                              
+                          </div>
+                          <div class="row">
+                              <div class="col-lg-10">
+                                  <br>
+                                  <button class="btn btn-success"><b>Télécharger la feuille de route</b></button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <script>
+                    
+                  function initMap1(directionsService1, directionsRenderer1) {
+
+                        //directionsService1 = new google.maps.DirectionsService;
+                        //directionsRenderer1 = new google.maps.DirectionsRenderer;
+                        
+                        var waypts1 = [];
+                        var checkboxArray1 = document.getElementById('waypoints{{forloop.counter}}');
+                        console.log(document.getElementById('waypoints{{forloop.counter}}'));
+                        for (var i = 0; i < checkboxArray1.length; i++) {
+                          
+                            waypts1.push({
+                              location: checkboxArray1[i].value,
+                              stopover: true
+                            });
+                          
+                        }
+                    
+                        var map1 = new google.maps.Map(document.getElementById('map{{forloop.counter}}', {
+                          zoom: 10,
+                          center: {lat: 7, lng: -5}
+                        }));
+                        directionsRenderer1.setMap(map1);
+
+                        document.getElementById('PLAN{{forloop.counter}}').addEventListener('click', function() {
+                            directionsService1.route({
+                            origin: document.getElementById('start{{forloop.counter}}').value,
+                            destination: document.getElementById('end{{forloop.counter}}').value,
+                            waypoints: waypts1,
+                            optimizeWaypoints: true,
+                            travelMode: 'DRIVING'
+                          }, function(response, status) {
+                            if (status === 'OK') {
+                              directionsRenderer1.setDirections(response);
+                              var route = response.routes[0];
+                              var summaryPanel = document.getElementById('directions-panel{{forloop.counter}}');
+                              summaryPanel.innerHTML = '';
+                              // For each route, display summary information.
+                              for (var i = 0; i < route.legs.length; i++) {
+                                var routeSegment = i + 1;
+                                summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+                                    '</b><br>';
+                                summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+                                summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+                                summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                              }
+                            } else {
+                              window.alert('Directions request failed due to ' + status);
+                            }
+                          });
+                        });     
+                    
+                  }
+                </script>
+                 
+                </div>
+              {% endfor %}
+          </div>
+        {% else %}
+            <div class="alert alert-dark" role="alert">
+              <stron>Aucun résultat n'a été trouvé !!!!!!</strong>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<br><br>
+<div class="row justify-content-end">
+  <div class="col-sm-8">
+    <a href="{% url 'route_page' %}" class="btn btn-secondary btn-lg"><b>Retour à la page</b></a>      
+  </div>
+</div>
+
+<!--numero 1-->
+<script>
+    var waypts = [];
+    var checkboxArray = document.getElementById('waypoints');
+    function initMap() {
+      var directionsService = new google.maps.DirectionsService;
+      var directionsRenderer = new google.maps.DirectionsRenderer;
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: {lat: 7, lng: -5}
+      });
+      directionsRenderer.setMap(map);
+
+      document.getElementById('PLAN').addEventListener('click', function() {
+        calculateAndDisplayRoute(directionsService, directionsRenderer);
+      });
+      //initMap1();
+      //var total = document.getElementById('total').value;
+      //console.log(parseInt(total));
+      
+      
+
+      {% for adresses in donnees_maps %}  
+
+        initMap1(new google.maps.DirectionsService,  new google.maps.DirectionsRenderer);
+         
+      {% endfor %}      
+     
+    }
+  </script>
+
+<!--numero 2-->
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAemZJQVlVR_26cPHZBSKaC0PoyHcCdboM&callback=initMap">
+</script>
+
+<script>
+  function convertasbinaryimage(id)
+  { 
+    html2canvas(document.getElementById(id), {
+        useCORS: true,
+        onrendered: function(canvas) {          
+        var img = canvas.toDataURL("image/png");         
+        img = img.replace('data:image/png;base64,', '');      
+        var finalImageSrc = 'data:image/png;base64,' + img;                 
+        
+        return false;                    
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
